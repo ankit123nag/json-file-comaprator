@@ -1,0 +1,23 @@
+@import '../../styles/mixins.scss';
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+
+    @media screen and (min-width: 640px) {
+        flex-direction: row;
+    }
+}
+
+.btn {
+    @include btn-css;
+    display: block;
+    margin: 0.8rem auto 2.5rem;
+
+    &:hover {
+        cursor: pointer;
+        background-color: #cccccc;
+    }
+}

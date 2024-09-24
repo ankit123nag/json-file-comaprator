@@ -1,0 +1,19 @@
+.output-container {
+    background-color: #efefef;
+    color: black;
+}
+
+.file-names {
+    font-size: 1rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: capitalize;
+    margin-bottom: 1rem;
+    text-decoration: underline;
+
+    @media screen and (min-width: 640px) {
+        justify-content: space-around;
+    }
+}
