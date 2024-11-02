@@ -1,70 +1,95 @@
-# Getting Started with Create React App
+# JSON File Comparator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple tool for comparing two JSON files and identifying the differences. This tool helps developers and data analysts quickly spot differences between JSON objects, making it useful for tasks like data validation, debugging, and configuration management.
 
-## Available Scripts
 
-In the project directory, you can run:
+## Test it Online / Demo
+You can try the JSON File Comparator directly in your browser [here](https://json-file-comaprision.vercel.app/).
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Deep Comparison**: Compares JSON objects at every nested level to ensure all differences are identified.
+- **Detailed Output**: Provides a summary of added, removed, and modified values between JSON files.
+- **Flexible Usage**: Allows users to compare JSON files from different environments or configurations.
+- **Error Handling**: Displays useful error messages for invalid JSON structures or parsing issues.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Getting Started
 
-### `npm test`
+### Prerequisites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Node.js (version 14 or higher recommended)
 
-### `npm run build`
+### Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Clone the repository and install dependencies:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+git clone https://github.com/ankit123nag/json-file-comparator.git
+cd json-file-comparator
+npm install
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Usage
 
-### `npm run eject`
+1. Prepare two JSON files you want to compare.
+2. Run the comparator script with the following command:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+node compare.js <file1.json> <file2.json>
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Replace `<file1.json>` and `<file2.json>` with the paths to your JSON files.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Output
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The script will output the differences between the two JSON files, categorizing them as:
+- **Added**: Keys or values that are present in `file2` but not in `file1`.
+- **Removed**: Keys or values that are present in `file1` but not in `file2`.
+- **Modified**: Keys that exist in both files but have different values.
 
-## Learn More
+## Example
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Suppose you have two JSON files:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**file1.json**
+```json
+{
+  "name": "Alice",
+  "age": 25,
+  "city": "New York"
+}
+```
 
-### Code Splitting
+**file2.json**
+```json
+{
+  "name": "Alice",
+  "age": 26,
+  "country": "USA"
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Running `node compare.js file1.json file2.json` will output:
 
-### Analyzing the Bundle Size
+```bash
+{
+  "modified": {
+    "age": { "old": 25, "new": 26 }
+  },
+  "added": {
+    "country": "USA"
+  },
+  "removed": {
+    "city": "New York"
+  }
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Contributing
 
-### Making a Progressive Web App
+Contributions are welcome! If you’d like to add features or fix bugs, please follow these steps:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Fork the repository.
+2. Create a new branch with a descriptive name.
+3. Commit and push your changes to your fork.
+4. Submit a pull request to the main branch.
